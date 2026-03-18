@@ -843,8 +843,13 @@
 </tbody>
 </table></section><section class="print-page" id="000-setup" heading-number="2.2"><h1 id="000-setup-lab-000-setup">Lab 000 - Setup<a class="headerlink" href="#000-setup-lab-000-setup" title="Permanent link">&para;</a></h1>
 <h2 id="000-setup-introduction">Introduction<a class="headerlink" href="#000-setup-introduction" title="Permanent link">&para;</a></h2>
-<p>Before diving into GitHub Actions, you need the right tools installed and configured. This lab walks you through installing the <strong>GitHub CLI (<code>gh</code>)</strong>, the <strong><code>act</code> local runner</strong>, creating a test repository, and verifying that your environment is ready for all subsequent labs.</p>
-<p>Having a properly configured environment saves time and frustration. The <code>gh</code> CLI lets you interact with GitHub from the terminal - managing repos, secrets, workflow runs, and more. The <code>act</code> tool lets you run GitHub Actions workflows locally, dramatically speeding up the feedback loop during development.</p>
+<ul>
+<li>Before diving into GitHub Actions, you need the right tools installed and configured.</li>
+<li>This lab walks you through installing the <strong>GitHub CLI (<code>gh</code>)</strong>, the <strong><code>act</code> local runner</strong>, creating a test repository, and verifying that your environment is ready for all subsequent labs.</li>
+<li>Having a properly configured environment saves time and frustration.</li>
+<li>The <code>gh</code> CLI lets you interact with GitHub from the terminal - managing repos, secrets, workflow runs, and more.</li>
+<li>The <code>act</code> tool lets you run GitHub Actions workflows locally, dramatically speeding up the feedback loop during development.</li>
+</ul>
 <hr />
 <h2 id="000-setup-prerequisites">Prerequisites<a class="headerlink" href="#000-setup-prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1094,8 +1099,12 @@
 <li>🔹 Verify API access and token scopes with <code>gh auth status</code> and <code>gh api rate_limit</code> to ensure all labs will work correctly</li>
 </ul></section><section class="print-page" id="001-first-workflow" heading-number="2.3"><h1 id="001-first-workflow-lab-001-first-workflow">Lab 001 - First Workflow<a class="headerlink" href="#001-first-workflow-lab-001-first-workflow" title="Permanent link">&para;</a></h1>
 <h2 id="001-first-workflow-introduction">Introduction<a class="headerlink" href="#001-first-workflow-introduction" title="Permanent link">&para;</a></h2>
-<p>A GitHub Actions <strong>workflow</strong> is an automated process defined in a YAML file. It lives in the <code>.github/workflows/</code> directory of your repository and runs automatically when triggered by an event - a push, a pull request, a schedule, or manually.</p>
-<p>This lab introduces the fundamental building blocks of every workflow: <code>name</code>, <code>on</code>, <code>jobs</code>, and <code>steps</code>. By the end you will have a working Hello World workflow, know how to view its results with <code>gh</code>, and understand the key concepts needed for all subsequent labs.</p>
+<ul>
+<li>A GitHub Actions <strong>workflow</strong> is an automated process defined in a YAML file.</li>
+<li>It lives in the <code>.github/workflows/</code> directory of your repository and runs automatically when triggered by an event - a push, a pull request, a schedule, or manually.</li>
+<li>This lab introduces the fundamental building blocks of every workflow: <code>name</code>, <code>on</code>, <code>jobs</code>, and <code>steps</code>.</li>
+<li>By the end you will have a working Hello World workflow, know how to view its results with <code>gh</code>, and understand the key concepts needed for all subsequent labs.</li>
+</ul>
 <hr />
 <h2 id="001-first-workflow-1-workflow-file-location">1. Workflow File Location<a class="headerlink" href="#001-first-workflow-1-workflow-file-location" title="Permanent link">&para;</a></h2>
 <p>GitHub Actions discovers workflows by looking for YAML files in a specific directory:</p>
@@ -1428,8 +1437,12 @@
 <li>🔹 Default environment variables like <code>GITHUB_SHA</code>, <code>GITHUB_REF</code>, <code>GITHUB_ACTOR</code>, and <code>GITHUB_REPOSITORY</code> are automatically available in every step</li>
 </ul></section><section class="print-page" id="002-triggers-events" heading-number="2.4"><h1 id="002-triggers-events-lab-002-triggers-and-events">Lab 002 - Triggers and Events<a class="headerlink" href="#002-triggers-events-lab-002-triggers-and-events" title="Permanent link">&para;</a></h1>
 <h2 id="002-triggers-events-introduction">Introduction<a class="headerlink" href="#002-triggers-events-introduction" title="Permanent link">&para;</a></h2>
-<p>A <strong>trigger</strong> (defined under the <code>on:</code> key) determines when a GitHub Actions workflow runs. GitHub Actions supports over 35 distinct event types - from code pushes and pull requests to scheduled cron jobs, manual dispatches, and external API calls.</p>
-<p>Choosing the right trigger is critical: too broad and your workflows run unnecessarily; too narrow and automation fails to fire at the right moment. This lab covers the most commonly used triggers with practical examples.</p>
+<ul>
+<li>A <strong>trigger</strong> (defined under the <code>on:</code> key) determines when a GitHub Actions workflow runs.</li>
+<li>GitHub Actions supports over 35 distinct event types - from code pushes and pull requests to scheduled cron jobs, manual dispatches, and external API calls.</li>
+<li>Choosing the right trigger is critical: too broad and your workflows run unnecessarily; too narrow and automation fails to fire at the right moment.</li>
+<li>This lab covers the most commonly used triggers with practical examples.</li>
+</ul>
 <hr />
 <h2 id="002-triggers-events-1-push-triggers">1. Push Triggers<a class="headerlink" href="#002-triggers-events-1-push-triggers" title="Permanent link">&para;</a></h2>
 <p>The <code>push</code> event fires when commits are pushed to a branch.</p>
@@ -1852,8 +1865,12 @@
 <li>🔹 The <code>release</code> event with <code>types: [published]</code> is the standard way to trigger build-and-upload pipelines that produce downloadable artifacts</li>
 </ul></section><section class="print-page" id="003-jobs-steps" heading-number="2.5"><h1 id="003-jobs-steps-lab-003-jobs-and-steps">Lab 003 - Jobs and Steps<a class="headerlink" href="#003-jobs-steps-lab-003-jobs-and-steps" title="Permanent link">&para;</a></h1>
 <h2 id="003-jobs-steps-introduction">Introduction<a class="headerlink" href="#003-jobs-steps-introduction" title="Permanent link">&para;</a></h2>
-<p>A GitHub Actions <strong>job</strong> is a set of steps that runs on the same runner. <strong>Steps</strong> are the individual tasks within a job - they can run shell commands, call published actions, or set outputs for subsequent steps.</p>
-<p>Understanding how to structure jobs and steps is the foundation of writing maintainable, efficient workflows. This lab covers parallel and sequential execution, job dependencies, step outputs, and best practices for organizing complex pipelines.</p>
+<ul>
+<li>A GitHub Actions <strong>job</strong> is a set of steps that runs on the same runner.</li>
+<li><strong>Steps</strong> are the individual tasks within a job - they can run shell commands, call published actions, or set outputs for subsequent steps.</li>
+<li>Understanding how to structure jobs and steps is the foundation of writing maintainable, efficient workflows.</li>
+<li>This lab covers parallel and sequential execution, job dependencies, step outputs, and best practices for organizing complex pipelines.</li>
+</ul>
 <hr />
 <h2 id="003-jobs-steps-1-defining-jobs">1. Defining Jobs<a class="headerlink" href="#003-jobs-steps-1-defining-jobs" title="Permanent link">&para;</a></h2>
 <p>Every workflow has at least one job. Jobs are defined under the <code>jobs:</code> key with a unique alphanumeric ID.</p>
@@ -2280,8 +2297,12 @@
 <li>🔹 <code>timeout-minutes:</code> can be set on both jobs and steps to prevent runaway processes from consuming runner minutes indefinitely</li>
 </ul></section><section class="print-page" id="004-runners" heading-number="2.6"><h1 id="004-runners-lab-004-runners">Lab 004 - Runners<a class="headerlink" href="#004-runners-lab-004-runners" title="Permanent link">&para;</a></h1>
 <h2 id="004-runners-introduction">Introduction<a class="headerlink" href="#004-runners-introduction" title="Permanent link">&para;</a></h2>
-<p>A <strong>runner</strong> is the server (virtual machine or container) that executes your workflow jobs. GitHub provides hosted runners with pre-installed software, or you can bring your own <strong>self-hosted runner</strong> for custom requirements.</p>
-<p>Choosing the right runner type affects cost, performance, available software, and security posture. This lab explores GitHub-hosted runner types, the <code>runs-on</code> syntax, pre-installed software, and an overview of self-hosted runners.</p>
+<ul>
+<li>A <strong>runner</strong> is the server (virtual machine or container) that executes your workflow jobs.</li>
+<li>GitHub provides hosted runners with pre-installed software, or you can bring your own <strong>self-hosted runner</strong> for custom requirements.</li>
+<li>Choosing the right runner type affects cost, performance, available software, and security posture.</li>
+<li>This lab explores GitHub-hosted runner types, the <code>runs-on</code> syntax, pre-installed software, and an overview of self-hosted runners.</li>
+</ul>
 <hr />
 <h2 id="004-runners-1-github-hosted-runners">1. GitHub-Hosted Runners<a class="headerlink" href="#004-runners-1-github-hosted-runners" title="Permanent link">&para;</a></h2>
 <p>GitHub maintains a fleet of runners that are provisioned fresh for each job and torn down after completion. You pay per minute (free for public repos, limited free minutes for private repos).</p>
@@ -2686,8 +2707,12 @@
 <li>🔹 Caching with <code>actions/cache@v4</code> or the built-in <code>cache:</code> option in setup actions dramatically reduces job runtime by avoiding redundant dependency downloads</li>
 </ul></section><section class="print-page" id="005-env-variables" heading-number="2.7"><h1 id="005-env-variables-lab-005-environment-variables">Lab 005 - Environment Variables<a class="headerlink" href="#005-env-variables-lab-005-environment-variables" title="Permanent link">&para;</a></h1>
 <h2 id="005-env-variables-introduction">Introduction<a class="headerlink" href="#005-env-variables-introduction" title="Permanent link">&para;</a></h2>
-<p>Environment variables in GitHub Actions carry configuration, metadata, and runtime values throughout your workflow. They can be set at three scopes - workflow, job, and step - and are accessed as standard Unix environment variables (<code>$VAR</code>) or through the <code>env</code> context (<code>${{ env.VAR }}</code>).</p>
-<p>GitHub also provides a set of <strong>default environment variables</strong> (like <code>GITHUB_SHA</code> and <code>GITHUB_REF</code>) that are automatically injected into every step. Understanding all these mechanisms is essential for writing flexible, maintainable workflows.</p>
+<ul>
+<li>Environment variables in GitHub Actions carry configuration, metadata, and runtime values throughout your workflow.</li>
+<li>They can be set at three scopes - workflow, job, and step - and are accessed as standard Unix environment variables (<code>$VAR</code>) or through the <code>env</code> context (<code>${{ env.VAR }}</code>).</li>
+<li>GitHub also provides a set of <strong>default environment variables</strong> (like <code>GITHUB_SHA</code> and <code>GITHUB_REF</code>) that are automatically injected into every step.</li>
+<li>Understanding all these mechanisms is essential for writing flexible, maintainable workflows.</li>
+</ul>
 <hr />
 <h2 id="005-env-variables-1-variable-scope-levels">1. Variable Scope Levels<a class="headerlink" href="#005-env-variables-1-variable-scope-levels" title="Permanent link">&para;</a></h2>
 <h3 id="005-env-variables-workflow-level-env">Workflow-level <code>env</code><a class="headerlink" href="#005-env-variables-workflow-level-env" title="Permanent link">&para;</a></h3>
@@ -3188,8 +3213,11 @@
 <li>🔹 For sensitive configuration use <code>secrets</code>, for non-sensitive repo/org configuration use <code>vars</code>, and for values derived at runtime use <code>GITHUB_ENV</code></li>
 </ul></section><section class="print-page" id="006-secrets-contexts" heading-number="2.8"><h1 id="006-secrets-contexts-lab-006-secrets-and-contexts">Lab 006 - Secrets and Contexts<a class="headerlink" href="#006-secrets-contexts-lab-006-secrets-and-contexts" title="Permanent link">&para;</a></h1>
 <h2 id="006-secrets-contexts-introduction">Introduction<a class="headerlink" href="#006-secrets-contexts-introduction" title="Permanent link">&para;</a></h2>
-<p><strong>Secrets</strong> store sensitive values (API keys, tokens, passwords) that your workflows need without exposing them in logs or YAML files. <strong>Contexts</strong> are structured objects that provide runtime information about the workflow, the triggering event, the runner, and more.</p>
-<p>Together, secrets and contexts give you access to everything you need - safely and expressively - to build powerful, production-grade workflows.</p>
+<ul>
+<li><strong>Secrets</strong> store sensitive values (API keys, tokens, passwords) that your workflows need without exposing them in logs or YAML files.</li>
+<li><strong>Contexts</strong> are structured objects that provide runtime information about the workflow, the triggering event, the runner, and more.</li>
+<li>Together, secrets and contexts give you access to everything you need - safely and expressively - to build powerful, production-grade workflows.</li>
+</ul>
 <hr />
 <h2 id="006-secrets-contexts-1-github-actions-contexts">1. GitHub Actions Contexts<a class="headerlink" href="#006-secrets-contexts-1-github-actions-contexts" title="Permanent link">&para;</a></h2>
 <p>A context is a collection of properties available via the <code>${{ context.property }}</code> expression syntax. Every context is automatically populated by GitHub at runtime.</p>
@@ -3611,8 +3639,13 @@
 <li>🔹 Restrict <code>GITHUB_TOKEN</code> permissions using the <code>permissions:</code> key at workflow or job level to follow the principle of least privilege</li>
 </ul></section><section class="print-page" id="007-expressions" heading-number="2.9"><h1 id="007-expressions-lab-007-expressions">Lab 007 - Expressions<a class="headerlink" href="#007-expressions-lab-007-expressions" title="Permanent link">&para;</a></h1>
 <h2 id="007-expressions-introduction">Introduction<a class="headerlink" href="#007-expressions-introduction" title="Permanent link">&para;</a></h2>
-<p>GitHub Actions <strong>expressions</strong> let you compute values, evaluate conditions, and transform data dynamically within your workflow files. They are evaluated at runtime by the GitHub Actions engine and can appear in almost any YAML value field.</p>
-<p>Expressions are enclosed in <code>${{ ... }}</code> and support a rich set of operators and built-in functions. This lab covers the full expression syntax, all built-in functions, and practical patterns you will use daily.</p>
+<ul>
+<li>GitHub Actions <strong>expressions</strong> let you compute values, evaluate conditions, and transform data dynamically within your workflow files.</li>
+<li>They are evaluated at runtime by the GitHub Actions engine and can appear in almost any YAML value field.</li>
+<li>Expressions are enclosed in `${{ &hellip;</li>
+<li>}}` and support a rich set of operators and built-in functions.</li>
+<li>This lab covers the full expression syntax, all built-in functions, and practical patterns you will use daily.</li>
+</ul>
 <hr />
 <h2 id="007-expressions-1-expression-syntax">1. Expression Syntax<a class="headerlink" href="#007-expressions-1-expression-syntax" title="Permanent link">&para;</a></h2>
 <p>Expressions are written inside <code>${{ }}</code> delimiters:</p>
@@ -3981,8 +4014,11 @@
 <li>🔹 Status functions <code>success()</code>, <code>failure()</code>, <code>always()</code>, and <code>cancelled()</code> enable conditional cleanup steps and notifications based on the outcome of previous steps</li>
 </ul></section><section class="print-page" id="008-conditions" heading-number="2.10"><h1 id="008-conditions-lab-008-conditions">Lab 008 - Conditions<a class="headerlink" href="#008-conditions-lab-008-conditions" title="Permanent link">&para;</a></h1>
 <h2 id="008-conditions-introduction">Introduction<a class="headerlink" href="#008-conditions-introduction" title="Permanent link">&para;</a></h2>
-<p><strong>Conditional execution</strong> lets you control which jobs and steps run based on the current state of the workflow - the triggering event, the branch, the result of previous steps, or custom inputs. The <code>if:</code> key is the primary mechanism for this, and it works in conjunction with GitHub Actions expressions from Lab 007.</p>
-<p>Mastering conditions is essential for building real-world pipelines: deploy only from main, skip expensive tests on documentation changes, send alerts only on failure, run cleanup steps regardless of outcome.</p>
+<ul>
+<li><strong>Conditional execution</strong> lets you control which jobs and steps run based on the current state of the workflow - the triggering event, the branch, the result of previous steps, or custom inputs.</li>
+<li>The <code>if:</code> key is the primary mechanism for this, and it works in conjunction with GitHub Actions expressions from Lab 007.</li>
+<li>Mastering conditions is essential for building real-world pipelines: deploy only from main, skip expensive tests on documentation changes, send alerts only on failure, run cleanup steps regardless of outcome.</li>
+</ul>
 <hr />
 <h2 id="008-conditions-1-the-if-key">1. The <code>if</code> Key<a class="headerlink" href="#008-conditions-1-the-if-key" title="Permanent link">&para;</a></h2>
 <p>The <code>if:</code> key can be applied to both <strong>jobs</strong> and <strong>steps</strong>:</p>
@@ -4323,8 +4359,12 @@
 <li>🔹 Event-based conditions (<code>github.event_name == 'push'</code>, <code>github.event_name == 'release'</code>) and actor conditions (<code>github.actor == 'dependabot[bot]'</code>) enable fine-grained per-event behavior within a single workflow file</li>
 </ul></section><section class="print-page" id="009-matrix-strategy" heading-number="2.11"><h1 id="009-matrix-strategy-lab-009-matrix-strategy">Lab 009 - Matrix Strategy<a class="headerlink" href="#009-matrix-strategy-lab-009-matrix-strategy" title="Permanent link">&para;</a></h1>
 <h2 id="009-matrix-strategy-introduction">Introduction<a class="headerlink" href="#009-matrix-strategy-introduction" title="Permanent link">&para;</a></h2>
-<p>The <strong>matrix strategy</strong> lets you run a job multiple times with different configurations simultaneously. Instead of duplicating jobs for every OS, language version, or configuration combination, you define the variables once and GitHub Actions spawns a separate job for each combination.</p>
-<p>This is the standard approach for cross-platform testing, multi-version validation, and parallel environment builds. This lab covers matrix syntax, multi-dimensional matrices, <code>include</code>/<code>exclude</code>, and advanced matrix control.</p>
+<ul>
+<li>The <strong>matrix strategy</strong> lets you run a job multiple times with different configurations simultaneously.</li>
+<li>Instead of duplicating jobs for every OS, language version, or configuration combination, you define the variables once and GitHub Actions spawns a separate job for each combination.</li>
+<li>This is the standard approach for cross-platform testing, multi-version validation, and parallel environment builds.</li>
+<li>This lab covers matrix syntax, multi-dimensional matrices, <code>include</code>/<code>exclude</code>, and advanced matrix control.</li>
+</ul>
 <hr />
 <h2 id="009-matrix-strategy-1-basic-matrix">1. Basic Matrix<a class="headerlink" href="#009-matrix-strategy-1-basic-matrix" title="Permanent link">&para;</a></h2>
 <p>A matrix is defined under <code>strategy.matrix</code>. Each key becomes a variable, and each value becomes one combination:</p>
@@ -4717,8 +4757,11 @@
 <li>🔹 Dynamic matrices are generated at runtime by outputting a JSON string from one job and consuming it with <code>fromJSON(needs.job.outputs.matrix)</code> in the next job&rsquo;s <code>strategy.matrix</code> field</li>
 </ul></section><section class="print-page" id="010-artifacts" heading-number="2.12"><h1 id="010-artifacts-lab-010-artifacts">Lab 010 - Artifacts<a class="headerlink" href="#010-artifacts-lab-010-artifacts" title="Permanent link">&para;</a></h1>
 <h2 id="010-artifacts-introduction">Introduction<a class="headerlink" href="#010-artifacts-introduction" title="Permanent link">&para;</a></h2>
-<p>GitHub Actions artifacts allow you to persist data produced during a workflow run and share that data between jobs. Artifacts are files or collections of files produced during a workflow run, such as compiled binaries, test results, coverage reports, or deployment packages.</p>
-<p>This lab covers the full lifecycle of artifacts: uploading them from a job, downloading them in a later job or locally, configuring retention, and understanding size and naming constraints.</p>
+<ul>
+<li>GitHub Actions artifacts allow you to persist data produced during a workflow run and share that data between jobs.</li>
+<li>Artifacts are files or collections of files produced during a workflow run, such as compiled binaries, test results, coverage reports, or deployment packages.</li>
+<li>This lab covers the full lifecycle of artifacts: uploading them from a job, downloading them in a later job or locally, configuring retention, and understanding size and naming constraints.</li>
+</ul>
 <hr />
 <h2 id="010-artifacts-what-are-artifacts">What Are Artifacts?<a class="headerlink" href="#010-artifacts-what-are-artifacts" title="Permanent link">&para;</a></h2>
 <p>Artifacts are files uploaded during a workflow run and stored by GitHub. They persist beyond the workflow run itself (for a configurable period) and can be:</p>
@@ -5093,8 +5136,11 @@
 <li>🔹 Artifact storage counts against your plan&rsquo;s included storage; compress large outputs before uploading to stay within limits</li>
 </ul></section><section class="print-page" id="011-caching" heading-number="2.13"><h1 id="011-caching-lab-011-caching">Lab 011 - Caching<a class="headerlink" href="#011-caching-lab-011-caching" title="Permanent link">&para;</a></h1>
 <h2 id="011-caching-introduction">Introduction<a class="headerlink" href="#011-caching-introduction" title="Permanent link">&para;</a></h2>
-<p>Dependency installation is often the most time-consuming part of a CI workflow. GitHub Actions provides a built-in caching mechanism that saves and restores directories between runs, dramatically reducing workflow durations when dependencies haven&rsquo;t changed.</p>
-<p>This lab covers the <code>actions/cache</code> action in depth, cache key design strategies, restore keys as fallbacks, and language-specific caching patterns for Node.js, Python, Maven, and Gradle.</p>
+<ul>
+<li>Dependency installation is often the most time-consuming part of a CI workflow.</li>
+<li>GitHub Actions provides a built-in caching mechanism that saves and restores directories between runs, dramatically reducing workflow durations when dependencies haven&rsquo;t changed.</li>
+<li>This lab covers the <code>actions/cache</code> action in depth, cache key design strategies, restore keys as fallbacks, and language-specific caching patterns for Node.js, Python, Maven, and Gradle.</li>
+</ul>
 <hr />
 <h2 id="011-caching-how-caching-works">How Caching Works<a class="headerlink" href="#011-caching-how-caching-works" title="Permanent link">&para;</a></h2>
 <p>When a workflow runs:</p>
@@ -5516,8 +5562,11 @@
 <li>🔹 Branch caches automatically fall back to the default branch cache, ensuring PRs benefit from the main branch&rsquo;s warm cache</li>
 </ul></section><section class="print-page" id="012-services-containers" heading-number="2.14"><h1 id="012-services-containers-lab-012-services-and-containers">Lab 012 - Services and Containers<a class="headerlink" href="#012-services-containers-lab-012-services-and-containers" title="Permanent link">&para;</a></h1>
 <h2 id="012-services-containers-introduction">Introduction<a class="headerlink" href="#012-services-containers-introduction" title="Permanent link">&para;</a></h2>
-<p>Many integration tests require real infrastructure - a running database, a message broker, or a cache. GitHub Actions supports this through <strong>service containers</strong>: Docker containers that run alongside your job and are accessible to all steps via localhost port mappings.</p>
-<p>You can also run the job itself inside a container, ensuring a consistent environment regardless of the runner&rsquo;s installed tools.</p>
+<ul>
+<li>Many integration tests require real infrastructure - a running database, a message broker, or a cache.</li>
+<li>GitHub Actions supports this through <strong>service containers</strong>: Docker containers that run alongside your job and are accessible to all steps via localhost port mappings.</li>
+<li>You can also run the job itself inside a container, ensuring a consistent environment regardless of the runner&rsquo;s installed tools.</li>
+</ul>
 <hr />
 <h2 id="012-services-containers-the-services-block">The <code>services</code> Block<a class="headerlink" href="#012-services-containers-the-services-block" title="Permanent link">&para;</a></h2>
 <p>Service containers are defined at the job level using the <code>services</code> key. Each service is a named Docker container started before the job&rsquo;s steps run.</p>
@@ -5887,8 +5936,11 @@
 <li>🔹 Environment variables passed to services via <code>env:</code> configure the container at startup, replacing manual init scripts</li>
 </ul></section><section class="print-page" id="013-reusable-workflows" heading-number="2.15"><h1 id="013-reusable-workflows-lab-013-reusable-workflows">Lab 013 - Reusable Workflows<a class="headerlink" href="#013-reusable-workflows-lab-013-reusable-workflows" title="Permanent link">&para;</a></h1>
 <h2 id="013-reusable-workflows-introduction">Introduction<a class="headerlink" href="#013-reusable-workflows-introduction" title="Permanent link">&para;</a></h2>
-<p>Reusable workflows allow you to centralize and share workflow logic across repositories or across multiple callers in the same repository. Instead of copying and pasting complex job definitions, you define the workflow once in a called workflow file and invoke it from multiple places.</p>
-<p>This lab covers how to define reusable workflows with inputs, outputs, and secrets, and how to call them correctly.</p>
+<ul>
+<li>Reusable workflows allow you to centralize and share workflow logic across repositories or across multiple callers in the same repository.</li>
+<li>Instead of copying and pasting complex job definitions, you define the workflow once in a called workflow file and invoke it from multiple places.</li>
+<li>This lab covers how to define reusable workflows with inputs, outputs, and secrets, and how to call them correctly.</li>
+</ul>
 <hr />
 <h2 id="013-reusable-workflows-what-is-a-reusable-workflow">What Is a Reusable Workflow?<a class="headerlink" href="#013-reusable-workflows-what-is-a-reusable-workflow" title="Permanent link">&para;</a></h2>
 <p>A reusable workflow is a regular workflow file that uses the <code>workflow_call</code> trigger. It can define:</p>
@@ -6271,8 +6323,11 @@
 <li>🔹 Key limitations include no step-level reuse, no matrix driving from the caller, and callee environment secrets must be accessible to the caller</li>
 </ul></section><section class="print-page" id="014-composite-actions" heading-number="2.16"><h1 id="014-composite-actions-lab-014-composite-actions">Lab 014 - Composite Actions<a class="headerlink" href="#014-composite-actions-lab-014-composite-actions" title="Permanent link">&para;</a></h1>
 <h2 id="014-composite-actions-introduction">Introduction<a class="headerlink" href="#014-composite-actions-introduction" title="Permanent link">&para;</a></h2>
-<p>Composite actions let you bundle multiple workflow steps into a single reusable unit that can be referenced like any other action. Unlike reusable workflows (which operate at the job level), composite actions operate at the <strong>step</strong> level - you can use them anywhere you would use a step.</p>
-<p>This lab covers how to author <code>action.yml</code> files for composite actions, define inputs and outputs, and call them from workflows.</p>
+<ul>
+<li>Composite actions let you bundle multiple workflow steps into a single reusable unit that can be referenced like any other action.</li>
+<li>Unlike reusable workflows (which operate at the job level), composite actions operate at the <strong>step</strong> level - you can use them anywhere you would use a step.</li>
+<li>This lab covers how to author <code>action.yml</code> files for composite actions, define inputs and outputs, and call them from workflows.</li>
+</ul>
 <hr />
 <h2 id="014-composite-actions-what-is-a-composite-action">What Is a Composite Action?<a class="headerlink" href="#014-composite-actions-what-is-a-composite-action" title="Permanent link">&para;</a></h2>
 <p>A composite action is defined by an <code>action.yml</code> (or <code>action.yaml</code>) file that specifies:</p>
@@ -6597,8 +6652,11 @@
 <li>🔹 Composite actions are ideal for DRY-ing up repeated setup steps (checkout, language setup, install) without the overhead of a full reusable workflow</li>
 </ul></section><section class="print-page" id="015-docker-actions" heading-number="2.17"><h1 id="015-docker-actions-lab-015-docker-actions">Lab 015 - Docker Actions<a class="headerlink" href="#015-docker-actions-lab-015-docker-actions" title="Permanent link">&para;</a></h1>
 <h2 id="015-docker-actions-introduction">Introduction<a class="headerlink" href="#015-docker-actions-introduction" title="Permanent link">&para;</a></h2>
-<p>Docker-based custom actions run your action logic inside a Docker container, giving you complete control over the runtime environment. Any language, any tool, any dependency - if it fits in a Docker image, it can be a GitHub Action.</p>
-<p>This lab covers how to build Docker actions from scratch: the <code>action.yml</code> configuration, the <code>Dockerfile</code>, the <code>entrypoint.sh</code> pattern, how inputs are passed as environment variables, and how to set outputs.</p>
+<ul>
+<li>Docker-based custom actions run your action logic inside a Docker container, giving you complete control over the runtime environment.</li>
+<li>Any language, any tool, any dependency - if it fits in a Docker image, it can be a GitHub Action.</li>
+<li>This lab covers how to build Docker actions from scratch: the <code>action.yml</code> configuration, the <code>Dockerfile</code>, the <code>entrypoint.sh</code> pattern, how inputs are passed as environment variables, and how to set outputs.</li>
+</ul>
 <hr />
 <h2 id="015-docker-actions-when-to-use-docker-actions">When to Use Docker Actions<a class="headerlink" href="#015-docker-actions-when-to-use-docker-actions" title="Permanent link">&para;</a></h2>
 <p>Docker actions are ideal when you need:</p>
@@ -7014,8 +7072,11 @@
 <li>🔹 Docker actions are Linux-only on GitHub-hosted runners; use JavaScript actions for cross-platform support</li>
 </ul></section><section class="print-page" id="016-javascript-actions" heading-number="2.18"><h1 id="016-javascript-actions-lab-016-javascript-actions">Lab 016 - JavaScript Actions<a class="headerlink" href="#016-javascript-actions-lab-016-javascript-actions" title="Permanent link">&para;</a></h1>
 <h2 id="016-javascript-actions-introduction">Introduction<a class="headerlink" href="#016-javascript-actions-introduction" title="Permanent link">&para;</a></h2>
-<p>JavaScript (and TypeScript) actions are the most common type of custom GitHub Actions. They start faster than Docker actions, run on all platforms (Linux, macOS, Windows), and have first-class support through the <code>@actions/</code> toolkit packages.</p>
-<p>This lab covers building a JavaScript action from scratch using <code>@actions/core</code>, <code>@actions/github</code>, bundling with <code>@vercel/ncc</code>, and testing with Jest.</p>
+<ul>
+<li>JavaScript (and TypeScript) actions are the most common type of custom GitHub Actions.</li>
+<li>They start faster than Docker actions, run on all platforms (Linux, macOS, Windows), and have first-class support through the <code>@actions/</code> toolkit packages.</li>
+<li>This lab covers building a JavaScript action from scratch using <code>@actions/core</code>, <code>@actions/github</code>, bundling with <code>@vercel/ncc</code>, and testing with Jest.</li>
+</ul>
 <hr />
 <h2 id="016-javascript-actions-why-javascript-actions">Why JavaScript Actions?<a class="headerlink" href="#016-javascript-actions-why-javascript-actions" title="Permanent link">&para;</a></h2>
 <table>
@@ -7395,7 +7456,11 @@
 <li>🔹 JavaScript actions run on all GitHub-hosted runner platforms (Linux, macOS, Windows), making them ideal for cross-platform scenarios</li>
 </ul></section><section class="print-page" id="017-permissions-security" heading-number="2.19"><h1 id="017-permissions-security-lab-017-permissions-and-security">Lab 017 - Permissions and Security<a class="headerlink" href="#017-permissions-security-lab-017-permissions-and-security" title="Permanent link">&para;</a></h1>
 <h2 id="017-permissions-security-introduction">Introduction<a class="headerlink" href="#017-permissions-security-introduction" title="Permanent link">&para;</a></h2>
-<p>GitHub Actions workflows run with significant privileges by default. Without careful configuration, a compromised or malicious workflow could exfiltrate secrets, push malicious code, or create unauthorized releases. This lab covers how to apply the principle of least privilege, pin third-party actions to specific commit SHAs, and audit your workflows for common security pitfalls.</p>
+<ul>
+<li>GitHub Actions workflows run with significant privileges by default.</li>
+<li>Without careful configuration, a compromised or malicious workflow could exfiltrate secrets, push malicious code, or create unauthorized releases.</li>
+<li>This lab covers how to apply the principle of least privilege, pin third-party actions to specific commit SHAs, and audit your workflows for common security pitfalls.</li>
+</ul>
 <hr />
 <h2 id="017-permissions-security-github_token-permissions"><code>GITHUB_TOKEN</code> Permissions<a class="headerlink" href="#017-permissions-security-github_token-permissions" title="Permanent link">&para;</a></h2>
 <p>Every workflow run receives an automatically generated <code>GITHUB_TOKEN</code> that grants access to the repository. By default (as of 2023), public repositories have <strong>read</strong> permissions and private repositories may have <strong>write</strong> permissions depending on the organization setting.</p>
@@ -7757,8 +7822,11 @@
 <li>🔹 Setting <code>permissions: read-all</code> at the workflow level is safer than the default <code>write-all</code> for workflows that do not need to write to the repository</li>
 </ul></section><section class="print-page" id="018-environments-deployments" heading-number="2.20"><h1 id="018-environments-deployments-lab-018-environments-and-deployments">Lab 018 - Environments and Deployments<a class="headerlink" href="#018-environments-deployments-lab-018-environments-and-deployments" title="Permanent link">&para;</a></h1>
 <h2 id="018-environments-deployments-introduction">Introduction<a class="headerlink" href="#018-environments-deployments-introduction" title="Permanent link">&para;</a></h2>
-<p>GitHub Environments provide a mechanism to control and track deployments. An environment can require manual approval before a deployment proceeds, restrict which branches can deploy to it, hold environment-specific secrets and variables, and maintain a full deployment history.</p>
-<p>This lab covers creating environments, setting up protection rules, using environment-specific secrets and variables, and building a complete staging-to-production deployment pipeline.</p>
+<ul>
+<li>GitHub Environments provide a mechanism to control and track deployments.</li>
+<li>An environment can require manual approval before a deployment proceeds, restrict which branches can deploy to it, hold environment-specific secrets and variables, and maintain a full deployment history.</li>
+<li>This lab covers creating environments, setting up protection rules, using environment-specific secrets and variables, and building a complete staging-to-production deployment pipeline.</li>
+</ul>
 <hr />
 <h2 id="018-environments-deployments-what-is-a-github-environment">What Is a GitHub Environment?<a class="headerlink" href="#018-environments-deployments-what-is-a-github-environment" title="Permanent link">&para;</a></h2>
 <p>An environment in GitHub is a named deployment target (e.g., <code>staging</code>, <code>production</code>) with:</p>
@@ -8111,8 +8179,11 @@
 <li>🔹 Deployment history is automatically maintained per environment, enabling auditability and supporting rollback workflows</li>
 </ul></section><section class="print-page" id="019-concurrency" heading-number="2.21"><h1 id="019-concurrency-lab-019-concurrency">Lab 019 - Concurrency<a class="headerlink" href="#019-concurrency-lab-019-concurrency" title="Permanent link">&para;</a></h1>
 <h2 id="019-concurrency-introduction">Introduction<a class="headerlink" href="#019-concurrency-introduction" title="Permanent link">&para;</a></h2>
-<p>By default, GitHub Actions runs every triggered workflow independently, which can lead to multiple workflow runs executing simultaneously. For deployments, this creates race conditions - two runs might try to deploy to the same environment at the same time, producing unpredictable results.</p>
-<p>The <code>concurrency</code> key allows you to define groups of runs that should not overlap, and to control whether a queued run should cancel or wait for the current one.</p>
+<ul>
+<li>By default, GitHub Actions runs every triggered workflow independently, which can lead to multiple workflow runs executing simultaneously.</li>
+<li>For deployments, this creates race conditions - two runs might try to deploy to the same environment at the same time, producing unpredictable results.</li>
+<li>The <code>concurrency</code> key allows you to define groups of runs that should not overlap, and to control whether a queued run should cancel or wait for the current one.</li>
+</ul>
 <hr />
 <h2 id="019-concurrency-the-concurrency-key">The <code>concurrency</code> Key<a class="headerlink" href="#019-concurrency-the-concurrency-key" title="Permanent link">&para;</a></h2>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#019-concurrency-__codelineno-0-1"></a><span class="nt">concurrency</span><span class="p">:</span>
@@ -8421,8 +8492,11 @@
 <li>🔹 Expressions in <code>cancel-in-progress</code> (e.g., <code>${{ github.ref != 'refs/heads/main' }}</code>) enable context-sensitive behavior without multiple workflow files</li>
 </ul></section><section class="print-page" id="020-workflow-dispatch" heading-number="2.22"><h1 id="020-workflow-dispatch-lab-020-workflow-dispatch">Lab 020 - Workflow Dispatch<a class="headerlink" href="#020-workflow-dispatch-lab-020-workflow-dispatch" title="Permanent link">&para;</a></h1>
 <h2 id="020-workflow-dispatch-introduction">Introduction<a class="headerlink" href="#020-workflow-dispatch-introduction" title="Permanent link">&para;</a></h2>
-<p>The <code>workflow_dispatch</code> event gives you the power to trigger GitHub Actions workflows manually - either from the GitHub web UI, the <code>gh</code> CLI, or the REST API. Unlike push or pull_request triggers that fire automatically, <code>workflow_dispatch</code> puts you in control of when a workflow runs and with what parameters.</p>
-<p>This lab covers how to define strongly-typed inputs for your manual workflows, how to use those inputs in steps, how to trigger runs programmatically with <code>gh workflow run</code>, and best practices for parameterizing workflows to support multiple environments, release types, and configurations.</p>
+<ul>
+<li>The <code>workflow_dispatch</code> event gives you the power to trigger GitHub Actions workflows manually - either from the GitHub web UI, the <code>gh</code> CLI, or the REST API.</li>
+<li>Unlike push or pull_request triggers that fire automatically, <code>workflow_dispatch</code> puts you in control of when a workflow runs and with what parameters.</li>
+<li>This lab covers how to define strongly-typed inputs for your manual workflows, how to use those inputs in steps, how to trigger runs programmatically with <code>gh workflow run</code>, and best practices for parameterizing workflows to support multiple environments, release types, and configurations.</li>
+</ul>
 <hr />
 <h2 id="020-workflow-dispatch-why-manual-triggers-matter">Why Manual Triggers Matter<a class="headerlink" href="#020-workflow-dispatch-why-manual-triggers-matter" title="Permanent link">&para;</a></h2>
 <p>Automated triggers (push, pull_request, schedule) cover most CI/CD scenarios, but there are situations where manual control is essential:</p>
@@ -8807,8 +8881,13 @@
 <li>🔹 Combine <code>workflow_dispatch</code> with other triggers to support both automated and manual execution paths</li>
 </ul></section><section class="print-page" id="021-dependabot" heading-number="2.23"><h1 id="021-dependabot-lab-021-dependabot">Lab 021 - Dependabot<a class="headerlink" href="#021-dependabot-lab-021-dependabot" title="Permanent link">&para;</a></h1>
 <h2 id="021-dependabot-introduction">Introduction<a class="headerlink" href="#021-dependabot-introduction" title="Permanent link">&para;</a></h2>
-<p>Keeping dependencies up to date is one of the most important - and most tedious - parts of software maintenance. Outdated dependencies accumulate security vulnerabilities, miss bug fixes, and eventually become so far behind that upgrading them becomes a major project. <strong>Dependabot</strong> automates this by scanning your project&rsquo;s dependency files, detecting outdated packages, and opening pull requests to upgrade them.</p>
-<p>This lab covers Dependabot&rsquo;s two complementary features: <strong>version updates</strong> (proactive upgrades to newer versions) and <strong>security alerts</strong> (reactive notifications and PRs for known vulnerabilities). You&rsquo;ll learn how to configure <code>dependabot.yml</code>, group related updates, auto-merge low-risk PRs, and integrate Dependabot into your CI/CD workflows.</p>
+<ul>
+<li>Keeping dependencies up to date is one of the most important - and most tedious - parts of software maintenance.</li>
+<li>Outdated dependencies accumulate security vulnerabilities, miss bug fixes, and eventually become so far behind that upgrading them becomes a major project.</li>
+<li><strong>Dependabot</strong> automates this by scanning your project&rsquo;s dependency files, detecting outdated packages, and opening pull requests to upgrade them.</li>
+<li>This lab covers Dependabot&rsquo;s two complementary features: <strong>version updates</strong> (proactive upgrades to newer versions) and <strong>security alerts</strong> (reactive notifications and PRs for known vulnerabilities).</li>
+<li>You&rsquo;ll learn how to configure <code>dependabot.yml</code>, group related updates, auto-merge low-risk PRs, and integrate Dependabot into your CI/CD workflows.</li>
+</ul>
 <hr />
 <h2 id="021-dependabot-why-dependabot-matters">Why Dependabot Matters<a class="headerlink" href="#021-dependabot-why-dependabot-matters" title="Permanent link">&para;</a></h2>
 <ul>
@@ -9268,8 +9347,12 @@
 <li>🔹 Private registry credentials are stored as repository secrets and referenced in <code>dependabot.yml</code> with <code>${{ secrets.NAME }}</code></li>
 </ul></section><section class="print-page" id="022-github-packages" heading-number="2.24"><h1 id="022-github-packages-lab-022-github-packages">Lab 022 - GitHub Packages<a class="headerlink" href="#022-github-packages-lab-022-github-packages" title="Permanent link">&para;</a></h1>
 <h2 id="022-github-packages-introduction">Introduction<a class="headerlink" href="#022-github-packages-introduction" title="Permanent link">&para;</a></h2>
-<p><strong>GitHub Packages</strong> is a package registry built into GitHub that supports Docker/OCI container images (via the <strong>GitHub Container Registry</strong>, GHCR), npm, Maven, Gradle, RubyGems, and NuGet packages. It is tightly integrated with GitHub&rsquo;s permission model, meaning access to packages inherits from repository and organization membership.</p>
-<p>This lab focuses on the most common use case: <strong>building and publishing Docker images to GHCR</strong> using GitHub Actions, along with publishing <strong>npm packages</strong> to GitHub&rsquo;s npm registry. You will learn how to authenticate, build multi-platform images, apply semantic version tags, and control package visibility.</p>
+<ul>
+<li><strong>GitHub Packages</strong> is a package registry built into GitHub that supports Docker/OCI container images (via the <strong>GitHub Container Registry</strong>, GHCR), npm, Maven, Gradle, RubyGems, and NuGet packages.</li>
+<li>It is tightly integrated with GitHub&rsquo;s permission model, meaning access to packages inherits from repository and organization membership.</li>
+<li>This lab focuses on the most common use case: <strong>building and publishing Docker images to GHCR</strong> using GitHub Actions, along with publishing <strong>npm packages</strong> to GitHub&rsquo;s npm registry.</li>
+<li>You will learn how to authenticate, build multi-platform images, apply semantic version tags, and control package visibility.</li>
+</ul>
 <hr />
 <h2 id="022-github-packages-why-github-packages-ghcr">Why GitHub Packages / GHCR?<a class="headerlink" href="#022-github-packages-why-github-packages-ghcr" title="Permanent link">&para;</a></h2>
 <ul>
@@ -9629,8 +9712,12 @@
 <li>🔹 Scanning images with Trivy (or Snyk) before pushing prevents vulnerable images from reaching production registries</li>
 </ul></section><section class="print-page" id="023-ci-pipeline" heading-number="2.25"><h1 id="023-ci-pipeline-lab-023-ci-pipeline">Lab 023 - CI Pipeline<a class="headerlink" href="#023-ci-pipeline-lab-023-ci-pipeline" title="Permanent link">&para;</a></h1>
 <h2 id="023-ci-pipeline-introduction">Introduction<a class="headerlink" href="#023-ci-pipeline-introduction" title="Permanent link">&para;</a></h2>
-<p>A <strong>Continuous Integration (CI) pipeline</strong> is the automated backbone of modern software delivery. Every time code is pushed, the pipeline runs a fixed sequence of quality gates - linting, testing, building, and security scanning - to ensure that every change meets your team&rsquo;s standards before it can be merged.</p>
-<p>This lab walks through building a production-grade CI pipeline for a Node.js project. You&rsquo;ll learn how to structure jobs for parallel execution, integrate code coverage reporting, add static analysis and security scanning, display build status badges, and configure smart failure behavior.</p>
+<ul>
+<li>A <strong>Continuous Integration (CI) pipeline</strong> is the automated backbone of modern software delivery.</li>
+<li>Every time code is pushed, the pipeline runs a fixed sequence of quality gates - linting, testing, building, and security scanning - to ensure that every change meets your team&rsquo;s standards before it can be merged.</li>
+<li>This lab walks through building a production-grade CI pipeline for a Node.js project.</li>
+<li>You&rsquo;ll learn how to structure jobs for parallel execution, integrate code coverage reporting, add static analysis and security scanning, display build status badges, and configure smart failure behavior.</li>
+</ul>
 <hr />
 <h2 id="023-ci-pipeline-what-makes-a-good-ci-pipeline">What Makes a Good CI Pipeline?<a class="headerlink" href="#023-ci-pipeline-what-makes-a-good-ci-pipeline" title="Permanent link">&para;</a></h2>
 <p>A well-designed CI pipeline has these characteristics:</p>
@@ -10002,8 +10089,11 @@
 <li>🔹 Build status badges in README provide instant visibility into pipeline health for the entire team</li>
 </ul></section><section class="print-page" id="024-cd-pipeline" heading-number="2.26"><h1 id="024-cd-pipeline-lab-024-cd-pipeline">Lab 024 - CD Pipeline<a class="headerlink" href="#024-cd-pipeline-lab-024-cd-pipeline" title="Permanent link">&para;</a></h1>
 <h2 id="024-cd-pipeline-introduction">Introduction<a class="headerlink" href="#024-cd-pipeline-introduction" title="Permanent link">&para;</a></h2>
-<p><strong>Continuous Deployment (CD)</strong> takes a passing CI build and automatically promotes it through deployment environments - typically staging (or dev), followed by production. The key challenges in CD are: ensuring you never deploy broken code, giving humans the opportunity to approve changes before they reach production, and recovering quickly when something goes wrong.</p>
-<p>This lab builds a complete CD pipeline that chains off CI, deploys to staging with automated smoke tests, gates production with an environment approval, demonstrates blue-green and rolling deployment patterns, and triggers automatic rollback on failure.</p>
+<ul>
+<li><strong>Continuous Deployment (CD)</strong> takes a passing CI build and automatically promotes it through deployment environments - typically staging (or dev), followed by production.</li>
+<li>The key challenges in CD are: ensuring you never deploy broken code, giving humans the opportunity to approve changes before they reach production, and recovering quickly when something goes wrong.</li>
+<li>This lab builds a complete CD pipeline that chains off CI, deploys to staging with automated smoke tests, gates production with an environment approval, demonstrates blue-green and rolling deployment patterns, and triggers automatic rollback on failure.</li>
+</ul>
 <hr />
 <h2 id="024-cd-pipeline-cd-pipeline-philosophy">CD Pipeline Philosophy<a class="headerlink" href="#024-cd-pipeline-cd-pipeline-philosophy" title="Permanent link">&para;</a></h2>
 <p>A good CD pipeline has these properties:</p>
@@ -10760,8 +10850,11 @@
 <li>🔹 A <code>workflow_dispatch</code> workflow that calls <code>gh api</code> is a simple way to apply consistent branch protection as code across many repositories</li>
 </ul></section><section class="print-page" id="026-code-scanning" heading-number="2.28"><h1 id="026-code-scanning-lab-026-code-scanning">Lab 026 - Code Scanning<a class="headerlink" href="#026-code-scanning-lab-026-code-scanning" title="Permanent link">&para;</a></h1>
 <h2 id="026-code-scanning-introduction">Introduction<a class="headerlink" href="#026-code-scanning-introduction" title="Permanent link">&para;</a></h2>
-<p><strong>Code scanning</strong> automatically analyzes your code for security vulnerabilities and coding errors using static analysis. GitHub&rsquo;s native code scanning is powered by <strong>CodeQL</strong> - a semantic code analysis engine developed by GitHub Security Lab that treats code as data and runs queries to find vulnerabilities.</p>
-<p>This lab covers setting up CodeQL in GitHub Actions, understanding SARIF output, using different query suites, writing custom queries, uploading results from third-party tools, and managing security alerts through the GitHub API.</p>
+<ul>
+<li><strong>Code scanning</strong> automatically analyzes your code for security vulnerabilities and coding errors using static analysis.</li>
+<li>GitHub&rsquo;s native code scanning is powered by <strong>CodeQL</strong> - a semantic code analysis engine developed by GitHub Security Lab that treats code as data and runs queries to find vulnerabilities.</li>
+<li>This lab covers setting up CodeQL in GitHub Actions, understanding SARIF output, using different query suites, writing custom queries, uploading results from third-party tools, and managing security alerts through the GitHub API.</li>
+</ul>
 <hr />
 <h2 id="026-code-scanning-what-is-codeql">What Is CodeQL?<a class="headerlink" href="#026-code-scanning-what-is-codeql" title="Permanent link">&para;</a></h2>
 <p>CodeQL works by building a queryable database from your source code (a snapshot of the program&rsquo;s structure and data flow), then running a set of security queries against that database. Unlike pattern-matching linters, CodeQL understands data flow: it can trace a user-controlled input from an HTTP request parameter all the way to a SQL query and flag it as an injection vulnerability, even across multiple function calls.</p>
@@ -11139,8 +11232,11 @@
 <li>🔹 Adding CodeQL check names to branch protection rules blocks PRs that introduce new code scanning alerts</li>
 </ul></section><section class="print-page" id="027-oidc-secrets" heading-number="2.29"><h1 id="027-oidc-secrets-lab-027-oidc-and-secrets">Lab 027 - OIDC and Secrets<a class="headerlink" href="#027-oidc-secrets-lab-027-oidc-and-secrets" title="Permanent link">&para;</a></h1>
 <h2 id="027-oidc-secrets-introduction">Introduction<a class="headerlink" href="#027-oidc-secrets-introduction" title="Permanent link">&para;</a></h2>
-<p><strong>OpenID Connect (OIDC)</strong> enables GitHub Actions workflows to authenticate to cloud providers like AWS, GCP, and Azure <strong>without storing long-lived credentials as secrets</strong>. Instead of a static access key that never expires, your workflow receives a short-lived OIDC token from GitHub&rsquo;s identity provider, exchanges it for a cloud credential that expires when the job ends, and performs its work.</p>
-<p>This lab covers how OIDC tokens work, how to configure trust relationships on AWS, GCP, and Azure, the required workflow permissions, and why this approach is significantly more secure than static credentials.</p>
+<ul>
+<li><strong>OpenID Connect (OIDC)</strong> enables GitHub Actions workflows to authenticate to cloud providers like AWS, GCP, and Azure <strong>without storing long-lived credentials as secrets</strong>.</li>
+<li>Instead of a static access key that never expires, your workflow receives a short-lived OIDC token from GitHub&rsquo;s identity provider, exchanges it for a cloud credential that expires when the job ends, and performs its work.</li>
+<li>This lab covers how OIDC tokens work, how to configure trust relationships on AWS, GCP, and Azure, the required workflow permissions, and why this approach is significantly more secure than static credentials.</li>
+</ul>
 <hr />
 <h2 id="027-oidc-secrets-why-oidc-is-better-than-static-credentials">Why OIDC Is Better Than Static Credentials<a class="headerlink" href="#027-oidc-secrets-why-oidc-is-better-than-static-credentials" title="Permanent link">&para;</a></h2>
 <h3 id="027-oidc-secrets-the-problem-with-long-lived-secrets">The Problem with Long-Lived Secrets<a class="headerlink" href="#027-oidc-secrets-the-problem-with-long-lived-secrets" title="Permanent link">&para;</a></h3>
@@ -11456,8 +11552,11 @@
 <li>🔹 OIDC tokens can be decoded locally with <code>base64 -d</code> to inspect claims during setup and debugging</li>
 </ul></section><section class="print-page" id="028-self-hosted-runners" heading-number="2.30"><h1 id="028-self-hosted-runners-lab-028-self-hosted-runners">Lab 028 - Self-Hosted Runners<a class="headerlink" href="#028-self-hosted-runners-lab-028-self-hosted-runners" title="Permanent link">&para;</a></h1>
 <h2 id="028-self-hosted-runners-introduction">Introduction<a class="headerlink" href="#028-self-hosted-runners-introduction" title="Permanent link">&para;</a></h2>
-<p>GitHub provides managed runners (Ubuntu, Windows, macOS) that are sufficient for most CI/CD workloads. But some scenarios require <strong>self-hosted runners</strong>: accessing private network resources, using specialized hardware (GPUs, specific CPU architectures), meeting compliance requirements that prohibit code execution on shared infrastructure, or running jobs at a scale where GitHub-hosted runners become cost-prohibitive.</p>
-<p>This lab covers the architecture of self-hosted runners, registration via <code>gh api</code> and the runner agent, ephemeral vs persistent runners, Docker-based runners, scaling with Actions Runner Controller (ARC), and the security considerations that make self-hosted runners a meaningful risk if misconfigured.</p>
+<ul>
+<li>GitHub provides managed runners (Ubuntu, Windows, macOS) that are sufficient for most CI/CD workloads.</li>
+<li>But some scenarios require <strong>self-hosted runners</strong>: accessing private network resources, using specialized hardware (GPUs, specific CPU architectures), meeting compliance requirements that prohibit code execution on shared infrastructure, or running jobs at a scale where GitHub-hosted runners become cost-prohibitive.</li>
+<li>This lab covers the architecture of self-hosted runners, registration via <code>gh api</code> and the runner agent, ephemeral vs persistent runners, Docker-based runners, scaling with Actions Runner Controller (ARC), and the security considerations that make self-hosted runners a meaningful risk if misconfigured.</li>
+</ul>
 <hr />
 <h2 id="028-self-hosted-runners-1-self-hosted-runner-architecture">1. Self-Hosted Runner Architecture<a class="headerlink" href="#028-self-hosted-runners-1-self-hosted-runner-architecture" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#028-self-hosted-runners-__codelineno-0-1"></a>GitHub Server
@@ -11772,8 +11871,11 @@
 <li>🔹 Self-hosted runners should never be used for public repositories - any fork PR can execute arbitrary code on the runner host</li>
 </ul></section><section class="print-page" id="029-github-script" heading-number="2.31"><h1 id="029-github-script-lab-029-github-script">Lab 029 - GitHub Script<a class="headerlink" href="#029-github-script-lab-029-github-script" title="Permanent link">&para;</a></h1>
 <h2 id="029-github-script-introduction">Introduction<a class="headerlink" href="#029-github-script-introduction" title="Permanent link">&para;</a></h2>
-<p><code>actions/github-script</code> is a GitHub Actions action that lets you write JavaScript directly in your workflow YAML - with the full <strong>Octokit REST API</strong> and <strong>GraphQL API</strong> pre-authenticated and pre-configured. Instead of shelling out to <code>curl</code> and juggling JSON with <code>jq</code>, you get a proper SDK with typed methods, automatic pagination, and first-class promise support.</p>
-<p>This lab covers the <code>github-script</code> action API, common patterns (PR comments, issue labeling, check runs, project automation), GraphQL usage, pagination, and how to write maintainable multi-line scripts.</p>
+<ul>
+<li><code>actions/github-script</code> is a GitHub Actions action that lets you write JavaScript directly in your workflow YAML - with the full <strong>Octokit REST API</strong> and <strong>GraphQL API</strong> pre-authenticated and pre-configured.</li>
+<li>Instead of shelling out to <code>curl</code> and juggling JSON with <code>jq</code>, you get a proper SDK with typed methods, automatic pagination, and first-class promise support.</li>
+<li>This lab covers the <code>github-script</code> action API, common patterns (PR comments, issue labeling, check runs, project automation), GraphQL usage, pagination, and how to write maintainable multi-line scripts.</li>
+</ul>
 <hr />
 <h2 id="029-github-script-why-github-script">Why <code>github-script</code>?<a class="headerlink" href="#029-github-script-why-github-script" title="Permanent link">&para;</a></h2>
 <ul>
@@ -12213,8 +12315,10 @@
 <li>🔹 Check run annotations (<code>annotation_level: 'warning' | 'failure'</code>) appear inline in PR file diffs for precise feedback</li>
 </ul></section><section class="print-page" id="030-advanced-patterns" heading-number="2.32"><h1 id="030-advanced-patterns-lab-030-advanced-patterns">Lab 030 - Advanced Patterns<a class="headerlink" href="#030-advanced-patterns-lab-030-advanced-patterns" title="Permanent link">&para;</a></h1>
 <h2 id="030-advanced-patterns-introduction">Introduction<a class="headerlink" href="#030-advanced-patterns-introduction" title="Permanent link">&para;</a></h2>
-<p>This final lab covers advanced GitHub Actions techniques that address real-world complexity: generating matrix strategies dynamically at runtime, chaining workflows across repositories with <code>repository_dispatch</code>, implementing slash commands via <code>issue_comment</code>, optimizing monorepo pipelines with path-based triggers, orchestrating complex multi-workflow systems, and automating repository maintenance on schedules.</p>
-<p>These patterns appear in mature CI/CD systems where the basic building blocks (triggers, jobs, actions) need to be combined in sophisticated ways to handle scale, flexibility, and automation requirements.</p>
+<ul>
+<li>This final lab covers advanced GitHub Actions techniques that address real-world complexity: generating matrix strategies dynamically at runtime, chaining workflows across repositories with <code>repository_dispatch</code>, implementing slash commands via <code>issue_comment</code>, optimizing monorepo pipelines with path-based triggers, orchestrating complex multi-workflow systems, and automating repository maintenance on schedules.</li>
+<li>These patterns appear in mature CI/CD systems where the basic building blocks (triggers, jobs, actions) need to be combined in sophisticated ways to handle scale, flexibility, and automation requirements.</li>
+</ul>
 <hr />
 <h2 id="030-advanced-patterns-1-dynamic-matrix-generation">1. Dynamic Matrix Generation<a class="headerlink" href="#030-advanced-patterns-1-dynamic-matrix-generation" title="Permanent link">&para;</a></h2>
 <p>Static matrices are limited to values known at workflow authoring time. Dynamic matrices generate their strategies from runtime data - a file listing changed services, an API response, or a script output.</p>
