@@ -1,0 +1,31 @@
+services:
+
+  # ── GitHub Actions Labs – web terminal UI ─────────────────────────────────────
+  github-actions-labs:
+    build:
+      args:
+        BUILD_TIME: ${BUILD_TIME:-}
+        IMAGE: ${IMAGE:-ghcr.io/nirgeier/github-actions-labs}
+        IMAGE_TAG: ${IMAGE_TAG:-latest}
+        SourceRepository: ${SourceRepository:-}
+      context: ..
+      dockerfile: docker/Dockerfile
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+        tags:
+          - ghcr.io/nirgeier/github-actions-labs:latest
+          - ghcr.io/nirgeier/github-actions-labs:${IMAGE_TAG:-latest}
+          - nirgeier/github-actions-labs:latest
+          - nirgeier/github-actions-labs:${IMAGE_TAG:-latest}
+    container_name: github-actions-labs
+    image: "ghcr.io/nirgeier/github-actions-labs:${IMAGE_TAG:-latest}"
+    labels:
+      - "com.example.app.Metadata.LastTagTime=${BUILD_TIME:-}"
+      - "com.example.app.Metadata.SourceRepository=${SourceRepository:-}"
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true

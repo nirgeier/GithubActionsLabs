@@ -1,0 +1,238 @@
+###
+### mkdocs-theme.yml
+###
+copyright:
+  '©2026 Nir Geier<br/><a href="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" target="_blank" rel="noopener"><img
+  src="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" alt="Visitor Badge"></a>'
+theme:
+  name: material
+  custom_dir: mkdocs/overrides
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.footnote.tooltips
+    - content.tabs.link
+    - content.tooltips
+    - content.footer.last-updated
+    - content.footer.contributors
+    - navigation.expand: false
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top: true
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    - toc.integrate
+    - toc.sticky
+
+    #- header.autohide  # Disabled to keep top nav always visible
+
+  # 👈 enables avatar display
+  palette:
+    # Dark mode only
+    - scheme: slate
+      primary: indigo # You can choose any color here
+
+  font:
+    text: Mulish
+    code: JetBrains Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+    repo: fontawesome/brands/github
+    admonition:
+      note: material/lightbulb
+###
+### mkdocs-nav.yml
+###
+
+nav:
+  - Start Here: welcome.md
+  - Labs:
+      - index.md
+      - 000 Setup: 000-setup/README.md
+      - 001 First Workflow: 001-first-workflow/README.md
+      - 002 Triggers And Events: 002-triggers-events/README.md
+      - 003 Jobs And Steps: 003-jobs-steps/README.md
+      - 004 Runners: 004-runners/README.md
+      - 005 Environment Variables: 005-env-variables/README.md
+      - 006 Secrets And Contexts: 006-secrets-contexts/README.md
+      - 007 Expressions: 007-expressions/README.md
+      - 008 Conditions: 008-conditions/README.md
+      - 009 Matrix Strategy: 009-matrix-strategy/README.md
+      - 010 Artifacts: 010-artifacts/README.md
+      - 011 Caching: 011-caching/README.md
+      - 012 Services And Containers: 012-services-containers/README.md
+      - 013 Reusable Workflows: 013-reusable-workflows/README.md
+      - 014 Composite Actions: 014-composite-actions/README.md
+      - 015 Docker Actions: 015-docker-actions/README.md
+      - 016 JavaScript Actions: 016-javascript-actions/README.md
+      - 017 Permissions And Security: 017-permissions-security/README.md
+      - 018 Environments And Deployments: 018-environments-deployments/README.md
+      - 019 Concurrency: 019-concurrency/README.md
+      - 020 Workflow Dispatch: 020-workflow-dispatch/README.md
+      - 021 Dependabot: 021-dependabot/README.md
+      - 022 GitHub Packages: 022-github-packages/README.md
+      - 023 CI Pipeline: 023-ci-pipeline/README.md
+      - 024 CD Pipeline: 024-cd-pipeline/README.md
+      - 025 Branch Protection: 025-branch-protection/README.md
+      - 026 Code Scanning: 026-code-scanning/README.md
+      - 027 OIDC And Secrets: 027-oidc-secrets/README.md
+      - 028 Self-Hosted Runners: 028-self-hosted-runners/README.md
+      - 029 GitHub Script: 029-github-script/README.md
+      - 030 Advanced Patterns: 030-advanced-patterns/README.md
+###
+### mkdocs-site.yml
+###
+docs_dir: Labs
+edit_uri: ""
+repo_name: nirgeier/GithubActionsLabs
+repo_url: https://github.com/nirgeier/GithubActionsLabs
+site_author: Nir Geier - nirgeier@gmail.com
+site_description: A collection of GitHub Actions Labs for learning and practicing GitHub Actions CI/CD skills.
+site_dir: ./mkdocs-site
+site_name: GithubActionsLabs
+site_url: https://nirgeier.github.io/GithubActionsLabs/
+###
+### mkdocs-extra.yml
+###
+
+extra:
+  assets:
+    - ./assets/images/
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nirgeier/GithubActionsLabs
+      name: View on GitHub
+      class: social-class__github
+
+    - icon: octicons/repo-forked-16
+      link: https://github.com/nirgeier/GithubActionsLabs/network/members
+      name: Fork this repo
+      class: social-class__fork
+
+    - icon: octicons/star-16
+      link: https://github.com/nirgeier/GithubActionsLabs/stargazers
+      name: Star this repo
+      class: social-class__star
+
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/nirgeier/
+      name: Connect on LinkedIn
+      class: social-class__linkedin
+
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/U6xW23Ss
+      name: Follow me on Discord
+      class: social-class__discord
+
+    - icon: fontawesome/brands/stack-overflow
+      link: https://stackoverflow.com/users/1755598/codewizard
+      name: Follow me on Stack Overflow
+      class: social-class__stackoverflow
+
+    - icon: fontawesome/brands/whatsapp
+      link: https://wa.me/972548122310
+      name: Follow me on WhatsApp
+      class: social-class__whatsapp
+
+    - icon: fontawesome/solid/envelope
+      link: mailto:nirg@codewizard.co.il
+      name: Email me
+      class: social-class__email
+
+extra_css:
+  - ./assets/stylesheets/codewizard.css?v=1773779606
+extra_javascript:
+  - https://buttons.github.io/buttons.js?v=1773779606
+###
+### mkdocs-extensions.yml
+###
+
+markdown_extensions:
+    - toc:
+          permalink: true
+          baselevel: 1
+          toc_depth: 3
+    - abbr
+    - tables
+    - admonition # For callouts/notes
+    - footnotes # Footnotes support
+    - attr_list # Attribute lists for elements
+    - def_list # Definition lists
+    - md_in_html # Markdown inside HTML blocks
+    - smarty # Smart punctuation
+    - meta
+    - codehilite:
+          guess_lang: true # Fallback code highlighting
+    - pymdownx.tabbed:
+          alternate_style: true
+    - pymdownx.details # Collapsible details
+    - pymdownx.inlinehilite # Inline code highlighting
+    - pymdownx.keys # Keyboard key formatting
+    - pymdownx.tasklist:
+          custom_checkbox: true
+    - pymdownx.betterem:
+          smart_enable: all
+    - pymdownx.tilde # Subscript/superscript
+    - pymdownx.snippets # Snippet includes
+    - pymdownx.highlight:
+          anchor_linenums: true
+          line_spans: __span
+          pygments_lang_class: true
+    - pymdownx.superfences:
+          custom_fences:
+              - name: mermaid
+                class: mermaid
+                format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.emoji:
+          emoji_index: !!python/name:material.extensions.emoji.twemoji
+          emoji_generator: !!python/name:material.extensions.emoji.to_svg
+###
+### mkdocs-plugins.yml
+###
+
+plugins:
+      - awesome-pages
+      - meta
+      # - pdf-export:
+      #     combined: true # all pages in one PDF
+      #     combined_output_path: docs/Full-Documentation.pdf
+      #     media_type: print
+      #     verbose: true
+      # Git
+      #- git-authors
+      - git-committers:
+              branch: main
+              docs_path: Labs # set if your docs folder is not root
+              enabled: true
+              repository: nirgeier/GithubActionsLabs
+      - git-revision-date-localized:
+              enable_creation_date: true
+              enable_git_follow: false
+              fallback_to_build_date: true
+              locale: en
+              timezone: UTC
+              type: date
+      - search:
+              separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      - minify:
+              minify_html: true
+
+      # Leave this one as the last one in the list
+      - print-site
+      - include-markdown
